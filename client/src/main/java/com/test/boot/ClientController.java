@@ -34,10 +34,10 @@ public class ClientController {
 	@Reference
 	private CenterUserService centerUserService;
 
-	@RequestMapping("a/{id}")
-	public Object ss(@PathVariable String id) {
+	@RequestMapping("a/{val}")
+	public Object ss(@PathVariable String val) {
 		ReturnS returns = centerUserService.getCenterUser(27l, 3l);
-		LOG.info(echoService.echo(id));
+		LOG.info(echoService.echo(val));
 		return returns;
 		// return echoService.echo(id);
 	}
