@@ -48,8 +48,8 @@ public class ClientController {
 	@Autowired
 	@Qualifier("test.queue2")
 	private Queue q2;
-	//@Autowired
-	//private Topic t;
+	@Autowired
+	private Topic t;
 
 	@RequestMapping("a/{val}")
 	public Object ss(@PathVariable String val) {
@@ -59,31 +59,31 @@ public class ClientController {
 		jmt.convertAndSend(q1, returns.getMsg());
 		jmt.convertAndSend(q2, returns.getMsg());
 		
-		//jmt.convertAndSend(t, returns.getMsg());
+		jmt.convertAndSend(t, returns.getMsg());
 		
 		return returns;
 		// return echoService.echo(id);
 	}
 
-	@JmsListener(destination = "test.queue1")
+	@JmsListener(destination = "test.queue1",containerFactory="jmsListenerContainerQueue")
 	public void mqReceive(String msg) {
 		LOG.info("test.queue1:" + msg);
 	}
 
-	@JmsListener(destination = "test.queue2")
+	@JmsListener(destination = "test.queue2",containerFactory="jmsListenerContainerQueue")
 	public void mqReceive2(Object msg) {
 		LOG.info("test.queue2:" + msg);
 	}
 	
 	
-	/*@JmsListener(destination = "test.topic")
+	@JmsListener(destination = "test.topic",containerFactory="jmsListenerContainerTopic")
 	public void mqReceive3(String msg) {
 		LOG.info("mqReceive3:" + msg);
 	}
 
-	@JmsListener(destination = "test.topic")
+	@JmsListener(destination = "test.topic",containerFactory="jmsListenerContainerTopic")
 	public void mqReceive4(Object msg) {
 		LOG.info("mqReceive4:" + msg);
-	}*/
+	}
 
 }
