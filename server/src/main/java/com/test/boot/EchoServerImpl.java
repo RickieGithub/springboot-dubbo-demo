@@ -1,8 +1,7 @@
 package com.test.boot;
 
 import com.alibaba.dubbo.config.annotation.Service;
-
-import cn.teaey.sprintboot.test.EchoService;
+import com.test.boot.EchoService;
 
 /**
  * @author xiaofei.wxf(teaey)

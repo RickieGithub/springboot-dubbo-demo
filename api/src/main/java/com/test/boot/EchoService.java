@@ -1,4 +1,4 @@
-package cn.teaey.sprintboot.test;
+package com.test.boot;
 
 /**
  * @author xiaofei.wxf(teaey)
